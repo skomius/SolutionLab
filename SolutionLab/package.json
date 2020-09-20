@@ -30,6 +30,7 @@
     "redux": "^4.0.5"
   },
   "devDependencies": {
+    "source-map-loader": "^1.1.0",
     "ts-loader": "^8.0.4",
     "typescript": "^4.0.3",
     "webpack": "^4.44.2",

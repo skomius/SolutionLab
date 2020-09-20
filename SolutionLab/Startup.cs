@@ -26,6 +26,9 @@ namespace SolutionLab
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<CoffeeContext>();
+            services.
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

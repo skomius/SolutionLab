@@ -7,10 +7,10 @@ public class CoffeeContext : DbContext
     public DbSet<Coffee> ScheduledTaxes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlite("Data Source=Taxes.db");
+        => options.UseSqlite("Data Source=Coffee.db");
 }
 
-public class Coffee
+public class Coffee: IEntity 
 {
     public Guid CoffeeId { get; set; }
 

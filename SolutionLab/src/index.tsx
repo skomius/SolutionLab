@@ -2,14 +2,14 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider} from "react-redux"
 import {createStore} from "redux"
-import { Clock } from "./component";
+import { CoffeesList } from "./Containers";
 import { coffeeBillboard} from "./Reducer"
 
 const store = createStore<any[], any, any, any>(coffeeBillboard);
 
 ReactDOM.render(
     <Provider store={store}>
-        <Clock />
+        <CoffeesList />
     </Provider>,
-    document.getElementById("clock")
+    document.getElementById("CoffeeList")
 );

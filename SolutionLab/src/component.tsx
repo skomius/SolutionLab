@@ -1,42 +1,45 @@
-import * as React from 'react'
-
-export class Clock extends React.Component<{}, { date: Date; isToggleOn: boolean }>{
-
-    private Timer: any = null;
-
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            date: new Date(),
-            isToggleOn: true
-        }
-    }
-
-    componentDidMount() {
-        this.Timer = setInterval(
-            () => this.tick(), 1000
-        )
-    }
-
-    handleClick = () => {
-        this.setState({ isToggleOn: !this.state.isToggleOn })
-    }
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import {connect} from "react-redux"
 
 
-    componentWillUnmount() {
-        clearInterval(this.Timer)
-    }
+export class Coffees extends React.Component<{ coffees: any[], onClick: any, loadData: any } , {}>{
 
-    tick() {
-        this.setState({
-            date: new Date()
-        })
+
+    componentDidMount(){
+        this.props.loadData()
     }
 
     render() {
-        return (<div>
-            <h1>{this.state.date.toLocaleTimeString()}</h1>
-        </div>
+
+        let arr = this.props.coffees
+        let rows: any[] = []
+
+        while (arr.length > 0) {
+            var elements = arr.splice(0, 4)
+            var row = []
+            for (var element of elements){
+                row.push(
+                    <th>
+                    <button onClick={this.props.onClick(element.id)}>Del</button>
+                    <img src={element.picUrl}></img>
+                    <p>{element.name}</p>
+                    <p>{element.price}</p>
+                    </th> 
+                )
+            }
+            rows.push(<tr>
+                {row}
+            </tr>)
+        }
+
+
+        return (
+            <div>
+                <table>
+                   {rows}
+                </table>
+            </div>
         )
-    }
+    };
 }

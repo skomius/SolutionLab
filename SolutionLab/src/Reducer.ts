@@ -16,9 +16,19 @@ export function coffeeBillboard (state = initialState, action: any) {
              return state.filter((coffee: any) => {
                 coffee.id != action.id
              })
+
+         case act.LOAD_COFFEES:
+             return Object.assign({}, state, {
+                coffees:[
+                    ...state,
+                    action.coffees
+                ]
+             })    
          default:
              return state;
      }
 }
+
+
 
 
