@@ -4,15 +4,14 @@
     "windowsAuthentication": false, 
     "anonymousAuthentication": true, 
     "iisExpress": {
-      "applicationUrl": "http://localhost:52916",
-      "sslPort": 44331
+      "applicationUrl": "http://localhost:52916"
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "index.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,8 +19,8 @@
     "SolutionLab": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "launchUrl": "index.html",
+      "applicationUrl": "http://localhost:5000;",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

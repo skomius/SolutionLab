@@ -1,0 +1,38 @@
+{
+  "name": "solutionlab",
+  "version": "1.0.0",
+  "description": "job application task ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skomius/SolutionLab.git"
+  },
+  "author": "Skomantas Juškys",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skomius/SolutionLab/issues"
+  },
+  "homepage": "https://github.com/skomius/SolutionLab#readme",
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-redux": "^7.1.9",
+    "@types/redux": "^3.6.0",
+    "axios": "^0.20.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "ts-loader": "^8.0.4",
+    "typescript": "^4.0.3",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  }
+}
