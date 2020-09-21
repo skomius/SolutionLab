@@ -5,9 +5,8 @@ import {connect} from "react-redux"
 
 export class Coffees extends React.Component<{ coffees: any[], onClick: any, loadData: any } , {}>{
 
-
-    componentDidMount(){
-        this.props.loadData()
+    componentDidMount() {
+        this.props.loadData();
     }
 
     render() {
@@ -15,8 +14,13 @@ export class Coffees extends React.Component<{ coffees: any[], onClick: any, loa
         let arr = this.props.coffees
         let rows: any[] = []
 
-        while (arr.length > 0) {
+        console.log(arr)
+        var len = arr.length
+
+        while (len > 0) {
             var elements = arr.splice(0, 4)
+            len = len - 4
+            console.log(elements)
             var row = []
             for (var element of elements){
                 row.push(
@@ -33,7 +37,7 @@ export class Coffees extends React.Component<{ coffees: any[], onClick: any, loa
             </tr>)
         }
 
-
+        console.log(row);
         return (
             <div>
                 <table>

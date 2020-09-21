@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 public class CoffeeContext : DbContext
 {
-    public DbSet<Coffee> ScheduledTaxes { get; set; }
+    public DbSet<Coffee> Coffee { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
         => options.UseSqlite("Data Source=Coffee.db");
@@ -12,7 +12,7 @@ public class CoffeeContext : DbContext
 
 public class Coffee: IEntity 
 {
-    public Guid CoffeeId { get; set; }
+    public int Id { get; set; }
 
     public string Name { get; set; }
 

@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
-import {deleteCoffee, loadCoffees} from "./actions"
+import {deleteCoffee, loadCoffeesFunk} from "./actions"
 import { Coffees } from './component'
 
 const mapStateToProps = (state: any[]) => {
+    console.log(state)
     return {
         coffees: state
     }
@@ -10,7 +11,7 @@ const mapStateToProps = (state: any[]) => {
 
 const mapDispatchToProps = (dispatch: any) =>{
     return {
-        loadData: () => dispatch(loadCoffees()),               
+        loadData: () => dispatch(loadCoffeesFunk(dispatch)),               
         onClick: (coffeeId: string) => {
             dispatch(deleteCoffee(coffeeId))
         }

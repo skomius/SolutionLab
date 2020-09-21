@@ -3,8 +3,9 @@ import * as act from "./actions"
 const initialState : any []  = [] 
    
 
-export function coffeeBillboard (state = initialState, action: any) {
-     switch (action.Type){
+export function coffeeBillboard(state = initialState, action: any) {
+    console.log(action)
+     switch (action.type){
          case act.ADD_COFFEE:
              return Object.assign({}, state, {
                  coffees:[
@@ -18,13 +19,23 @@ export function coffeeBillboard (state = initialState, action: any) {
              })
 
          case act.LOAD_COFFEES:
+             console.log("tes")
              return Object.assign({}, state, {
                 coffees:[
                     ...state,
                     action.coffees
                 ]
-             })    
+             })
+         case act.LOAD_COFFEES_V:
+             console.log("test")
+             return Object.assign({}, state, {
+                 coffees: [
+                     ...state,
+                     action.coffees
+                 ]
+             })
          default:
+             console.log("test")
              return state;
      }
 }
