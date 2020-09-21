@@ -3,32 +3,32 @@ import axios from "axios"
 export const ADD_COFFEE = 'ADD_COFFEE'
 export const DELETE_COFFEE = 'DELETE_COFFEE'
 export const LOAD_COFFEES = 'LOAD_COFFEES'
-export const LOAD_COFFEES_V = 'LOAD_COFFEES_V'
+export const APICALL_FAIL = 'APICALL_FAIL'
 
-export const addCoffee = async (coffee: any) => {
+export const addCoffee = async (dispatch: any, coffee: any) => {
    
     try {
         const res = await axios.post('http://localhost:52916/api/', coffee)
     }
     catch (e) {
         console.error(e.message)
-        return
+        dispatch(apiFail())
     }
-
-    return { type: ADD_COFFEE, coffee }
 }
 
-export const deleteCoffee = async(dispatch: any, coffeeId: string) => {
+export const deleteCoffee = async(dispatch: any, coffeeId: number) => {
 
     try {
-        const res = await axios.post('http://jsonplaceholder.typicode.com/users', coffeeId)
+        const res = await axios.delete('http://localhost:52916/api/Coffee/' + coffeeId)
     }
     catch (e) {
         console.error(e.message)
-        return
+        dispatch(apiFail())
     }
+}
 
-    dispatch(deleteCoffeeDispatch(coffeeId))
+export const apiFail = () => {
+    return { type: APICALL_FAIL}
 }
 
 export const loadCoffeeDispatch = (coffees: any[]) => {
@@ -49,18 +49,16 @@ export const loadCoffees = async (dispatch: any) => {
     }
     catch (e) {
         console.error(e.message)
-        return
+        dispatch(apiFail())
     }
 
     dispatch(loadCoffeeDispatch(coffees))
-
-    return { type: LOAD_COFFEES, coffees }
 }
 
-export const loadCoffeesthunk = (dispatch: any) => {
+export const loadCoffeesThunk = (dispatch: any) => {
     return () => loadCoffees(dispatch)
 } 
 
-export const deleteCoffeesthunk = (dispatch: any) => {
-    return () => loadCoffees(dispatch)
+export const deleteCoffeeThunk = (dispatch: any, coffeeId: number) => {
+    return () => deleteCoffee(dispatch, coffeeId)
 }

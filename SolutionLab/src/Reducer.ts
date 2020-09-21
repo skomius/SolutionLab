@@ -1,6 +1,6 @@
 import * as act from "./actions"
 
-const initialState: any = { coffees: []} 
+const initialState: any = { coffees: [], isFirstLoad: true} 
    
 
 export function coffeeBillboard(state = initialState, action: any) {
@@ -14,27 +14,18 @@ export function coffeeBillboard(state = initialState, action: any) {
                  ]
              })
          case act.DELETE_COFFEE:
-             return state.filter((coffee: any) => {
+             return state.coffees.filter((coffee: any) => {
                 coffee.id != action.id
              })
 
          case act.LOAD_COFFEES:
-             console.log("tes")
              return Object.assign({}, state, {
                 coffees:[
-                    ...action.coffeeloa
-                ]
-             })
-         case act.LOAD_COFFEES_V:
-             console.log("test")
-             return Object.assign({}, state, {
-                 coffees: [
-                     ...state,
-                     action.coffees
-                 ]
+                    ...action.coffees
+                ],
+                isFirstLoad: false
              })
          default:
-             console.log("test")
              return state;
      }
 }

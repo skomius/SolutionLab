@@ -23,11 +23,38 @@ namespace SolutionLab
                 var context = serviceScope.ServiceProvider.GetRequiredService<CoffeeContext>();
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
-                context.Add(new Coffee(){
-                    Name = "Test",
-                    Price = 23,
-                    PicUrl = "test"
-                });
+                context.AddRange(
+                    new Coffee()
+                    {
+                        Name = "Test",
+                        Price = 23,
+                        PicUrl = "test"
+                    },
+                    new Coffee()
+                    {
+                        Name = "Test",
+                        Price = 24,
+                        PicUrl = "test"
+                    },
+                    new Coffee()
+                    {
+                        Name = "Test",
+                        Price = 25,
+                        PicUrl = "test"
+                    },
+                    new Coffee()
+                    {
+                        Name = "Test",
+                        Price = 26,
+                        PicUrl = "test"
+                    },
+                     new Coffee()
+                     {
+                         Name = "Test",
+                         Price = 27,
+                         PicUrl = "test"
+                     }
+                );
 
                 context.SaveChanges();
             };
@@ -36,7 +63,7 @@ namespace SolutionLab
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)           
-                .UseStartup<Startup>();                
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
     }
 }

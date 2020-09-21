@@ -8,7 +8,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const act = __importStar(require("./actions"));
-const initialState = [];
+const initialState = { coffees: [] };
 function coffeeBillboard(state = initialState, action) {
     console.log(action);
     switch (action.type) {
@@ -20,15 +20,14 @@ function coffeeBillboard(state = initialState, action) {
                 ]
             });
         case act.DELETE_COFFEE:
-            return state.filter((coffee) => {
+            return state.coffees.filter((coffee) => {
                 coffee.id != action.id;
             });
         case act.LOAD_COFFEES:
             console.log("tes");
             return Object.assign({}, state, {
                 coffees: [
-                    ...state,
-                    action.coffees
+                    ...action.coffees
                 ]
             });
         case act.LOAD_COFFEES_V:

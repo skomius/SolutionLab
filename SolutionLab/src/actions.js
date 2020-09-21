@@ -26,7 +26,7 @@ exports.addCoffee = (coffee) => __awaiter(this, void 0, void 0, function* () {
     }
     return { type: exports.ADD_COFFEE, coffee };
 });
-exports.deleteCoffee = (coffeeId) => __awaiter(this, void 0, void 0, function* () {
+exports.deleteCoffee = (dispatch, coffeeId) => __awaiter(this, void 0, void 0, function* () {
     try {
         const res = yield axios_1.default.post('http://jsonplaceholder.typicode.com/users', coffeeId);
     }
@@ -34,10 +34,13 @@ exports.deleteCoffee = (coffeeId) => __awaiter(this, void 0, void 0, function* (
         console.error(e.message);
         return;
     }
-    return { type: exports.DELETE_COFFEE, coffeeId };
+    dispatch(exports.deleteCoffeeDispatch(coffeeId));
 });
-exports.loadCoffeeV = (coffees) => {
+exports.loadCoffeeDispatch = (coffees) => {
     return { type: exports.LOAD_COFFEES, coffees };
+};
+exports.deleteCoffeeDispatch = (coffeeId) => {
+    return { type: exports.DELETE_COFFEE, coffeeId };
 };
 exports.loadCoffees = (dispatch) => __awaiter(this, void 0, void 0, function* () {
     let coffees = [];
@@ -49,9 +52,12 @@ exports.loadCoffees = (dispatch) => __awaiter(this, void 0, void 0, function* ()
         console.error(e.message);
         return;
     }
-    dispatch(exports.loadCoffeeV(coffees));
+    dispatch(exports.loadCoffeeDispatch(coffees));
     return { type: exports.LOAD_COFFEES, coffees };
 });
-exports.loadCoffeesFunk = (dispatch) => {
+exports.loadCoffeesThunk = (dispatch) => {
     return () => exports.loadCoffees(dispatch);
+};
+exports.deleteCoffeeThunk = (dispatch, coffeeId) => {
+    return () => exports.deleteCoffee(dispatch, coffeeId);
 };
