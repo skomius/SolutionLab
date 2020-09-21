@@ -18,7 +18,7 @@ export const addCoffee = async (coffee: any) => {
     return { type: ADD_COFFEE, coffee }
 }
 
-export const deleteCoffee = async (coffeeId: string) => {
+export const deleteCoffee = async(dispatch: any, coffeeId: string) => {
 
     try {
         const res = await axios.post('http://jsonplaceholder.typicode.com/users', coffeeId)
@@ -28,11 +28,15 @@ export const deleteCoffee = async (coffeeId: string) => {
         return
     }
 
-    return { type: DELETE_COFFEE, coffeeId }
+    dispatch(deleteCoffeeDispatch(coffeeId))
 }
 
-export const loadCoffeeV = (coffees: any[]) => {
+export const loadCoffeeDispatch = (coffees: any[]) => {
     return { type: LOAD_COFFEES, coffees }
+}
+
+export const deleteCoffeeDispatch = (coffeeId: string) => {
+    return { type: DELETE_COFFEE, coffeeId }
 } 
 
 export const loadCoffees = async (dispatch: any) => {
@@ -48,11 +52,15 @@ export const loadCoffees = async (dispatch: any) => {
         return
     }
 
-    dispatch(loadCoffeeV(coffees))
+    dispatch(loadCoffeeDispatch(coffees))
 
     return { type: LOAD_COFFEES, coffees }
 }
 
-export const loadCoffeesFunk = (dispatch: any) => {
+export const loadCoffeesthunk = (dispatch: any) => {
     return () => loadCoffees(dispatch)
 } 
+
+export const deleteCoffeesthunk = (dispatch: any) => {
+    return () => loadCoffees(dispatch)
+}
