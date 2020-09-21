@@ -11,31 +11,36 @@ export class Coffees extends React.Component<{ coffees: any[], onClick: any, loa
 
     render() {
 
-        let arr = this.props.coffees
-        let rows: any[] = []
+        let arr = this.props.coffees;
+        let rows: any[] = [];
+        let row: any[] = [];
 
-        console.log(arr)
-        var len = arr.length
+        console.log(arr);
 
-        while (len > 0) {
-            var elements = arr.splice(0, 4)
-            len = len - 4
-            console.log(elements)
-            var row = []
-            for (var element of elements){
-                row.push(
+        arr.reduce((previuos, current, index, array) => {
+
+            if (previuos.length < 4) {
+                previuos.push(
                     <th>
-                    <button onClick={this.props.onClick(element.id)}>Del</button>
-                    <img src={element.picUrl}></img>
-                    <p>{element.name}</p>
-                    <p>{element.price}</p>
-                    </th> 
+                        <button onClick={this.props.onClick(current.id)}>Del</button>
+                        <img src={current.picUrl}></img>
+                        <p>{current.name}</p>
+                        <p>{current.price}</p>
+                    </th>
                 )
             }
-            rows.push(<tr>
-                {row}
-            </tr>)
-        }
+
+            if (previuos.length == 4 || array.length == index + 1) {
+                rows.push(<tr>
+                    {previuos}
+                </tr>)
+
+                return []
+            }
+
+            return previuos
+
+        }, []);
 
         console.log(row);
         return (
@@ -45,5 +50,5 @@ export class Coffees extends React.Component<{ coffees: any[], onClick: any, loa
                 </table>
             </div>
         )
-    };
+    }
 }

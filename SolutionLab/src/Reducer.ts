@@ -1,6 +1,6 @@
 import * as act from "./actions"
 
-const initialState : any []  = [] 
+const initialState: any = { coffees: []} 
    
 
 export function coffeeBillboard(state = initialState, action: any) {
@@ -22,8 +22,7 @@ export function coffeeBillboard(state = initialState, action: any) {
              console.log("tes")
              return Object.assign({}, state, {
                 coffees:[
-                    ...state,
-                    action.coffees
+                    ...action.coffeeloa
                 ]
              })
          case act.LOAD_COFFEES_V:

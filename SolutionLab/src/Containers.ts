@@ -2,10 +2,10 @@ import { connect } from 'react-redux'
 import {deleteCoffee, loadCoffeesFunk} from "./actions"
 import { Coffees } from './component'
 
-const mapStateToProps = (state: any[]) => {
+const mapStateToProps = (state: any) => {
     console.log(state)
     return {
-        coffees: state
+        coffees: state.coffees
     }
 }
 
