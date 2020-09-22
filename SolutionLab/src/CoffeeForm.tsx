@@ -3,7 +3,7 @@ import { Field, reduxForm, InjectedFormProps } from 'redux-form'
 import { element } from 'prop-types';
 
 const required = (value: any) => value ? undefined : 'Required'
-const number = (value: any) => value && isNaN(Number(value)) ? 'Must be a number' : undefined
+const number = (value: any) => value && isNaN(Number(value)) ? 'Not a number' : undefined
 
 class RenderField extends React.Component<{ input: any, label: any, type: any, meta: { touched: any, error: any, warning: any } }, {}> {
 
