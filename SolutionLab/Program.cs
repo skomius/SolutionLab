@@ -26,34 +26,46 @@ namespace SolutionLab
                 context.AddRange(
                     new Coffee()
                     {
-                        Name = "Test",
-                        Price = 23,
-                        PicUrl = "test"
+                        Name = "Espresso macchiatto",
+                        Price = 10,
+                        PicUrl = "media/espresso_macchiatto.jpg"
                     },
                     new Coffee()
                     {
-                        Name = "Test",
-                        Price = 24,
-                        PicUrl = "test"
+                        Name = "Cappuccino",
+                        Price = 10,
+                        PicUrl = "media/cappuccino.jpg"
                     },
                     new Coffee()
                     {
-                        Name = "Test",
-                        Price = 25,
-                        PicUrl = "test"
+                        Name = "Coffee creme",
+                        Price = 10,
+                        PicUrl = "media/caffe_creme.jpg"
                     },
                     new Coffee()
                     {
-                        Name = "Test",
-                        Price = 26,
-                        PicUrl = "test"
+                        Name = "Caffe latte",
+                        Price = 10,
+                        PicUrl = "media/cafe_latte.jpg"
                     },
                      new Coffee()
                      {
-                         Name = "Test",
-                         Price = 27,
-                         PicUrl = "test"
-                     }
+                         Name = "Espresso doppio ",
+                         Price = 10,
+                         PicUrl = "media/espresso_doppio.jpg"
+                     },
+                      new Coffee()
+                      {
+                          Name = "Freshpresso",
+                          Price = 10,
+                          PicUrl = "media/freshpresso.jpg"
+                      },
+                      new Coffee()
+                      {
+                          Name = "Kavos glotnutis ",
+                          Price = 10,
+                          PicUrl = "media/coffee_smoothie.jpg"
+                      }
                 );
 
                 context.SaveChanges();

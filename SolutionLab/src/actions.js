@@ -15,33 +15,26 @@ const axios_1 = __importDefault(require("axios"));
 exports.ADD_COFFEE = 'ADD_COFFEE';
 exports.DELETE_COFFEE = 'DELETE_COFFEE';
 exports.LOAD_COFFEES = 'LOAD_COFFEES';
-exports.LOAD_COFFEES_V = 'LOAD_COFFEES_V';
-exports.addCoffee = (coffee) => __awaiter(this, void 0, void 0, function* () {
+exports.APICALL_FAIL = 'APICALL_FAIL';
+exports.addCoffee = (dispatch, coffee) => __awaiter(this, void 0, void 0, function* () {
     try {
-        const res = yield axios_1.default.post('http://localhost:52916/api/', coffee);
+        const res = yield axios_1.default.post('http://localhost:52916/api/Coffee', coffee);
     }
     catch (e) {
         console.error(e.message);
-        return;
+        dispatch(exports.apiFail());
     }
-    return { type: exports.ADD_COFFEE, coffee };
 });
 exports.deleteCoffee = (dispatch, coffeeId) => __awaiter(this, void 0, void 0, function* () {
     try {
-        const res = yield axios_1.default.post('http://jsonplaceholder.typicode.com/users', coffeeId);
+        const res = yield axios_1.default.delete('http://localhost:52916/api/Coffee/' + coffeeId);
     }
     catch (e) {
         console.error(e.message);
-        return;
+        dispatch(exports.apiFail());
     }
     dispatch(exports.deleteCoffeeDispatch(coffeeId));
 });
-exports.loadCoffeeDispatch = (coffees) => {
-    return { type: exports.LOAD_COFFEES, coffees };
-};
-exports.deleteCoffeeDispatch = (coffeeId) => {
-    return { type: exports.DELETE_COFFEE, coffeeId };
-};
 exports.loadCoffees = (dispatch) => __awaiter(this, void 0, void 0, function* () {
     let coffees = [];
     try {
@@ -50,11 +43,22 @@ exports.loadCoffees = (dispatch) => __awaiter(this, void 0, void 0, function* ()
     }
     catch (e) {
         console.error(e.message);
-        return;
+        dispatch(exports.apiFail());
     }
     dispatch(exports.loadCoffeeDispatch(coffees));
-    return { type: exports.LOAD_COFFEES, coffees };
 });
+exports.apiFail = () => {
+    return { type: exports.APICALL_FAIL };
+};
+exports.addCoffeeDispatch = (coffee) => {
+    return { type: exports.ADD_COFFEE, coffee };
+};
+exports.loadCoffeeDispatch = (coffees) => {
+    return { type: exports.LOAD_COFFEES, coffees };
+};
+exports.deleteCoffeeDispatch = (coffeeId) => {
+    return { type: exports.DELETE_COFFEE, coffeeId };
+};
 exports.loadCoffeesThunk = (dispatch) => {
     return () => exports.loadCoffees(dispatch);
 };

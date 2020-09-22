@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom";
 import { connect, useStore } from "react-redux";
 import { CoffeesList } from "./Coffees"
 import { loadCoffeesThunk } from "./actions";
+import { CoffeePageConnected } from "./coffeePage"
 
 
 export class App extends React.Component<{ loadData: any, isFirstLoad: boolean }, {}> {
@@ -14,8 +15,13 @@ export class App extends React.Component<{ loadData: any, isFirstLoad: boolean }
 
     render() {
         return (
-            <div>
-                <CoffeesList />
+            <div className="container container-center">
+                <div className="container container-form">
+                    <CoffeePageConnected />
+                </div>
+                <div className="container container-billboard">
+                    <CoffeesList />
+                </div>
             </div>
         )
     }
@@ -23,7 +29,7 @@ export class App extends React.Component<{ loadData: any, isFirstLoad: boolean }
 
 const mapStateToProps = (state: any) => {
     return {
-        isFirstLoad: state.isFirstLoad
+        isFirstLoad: state.coffeeBillboard.isFirstLoad
     }
 }
 

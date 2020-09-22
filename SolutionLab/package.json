@@ -4,8 +4,9 @@
   "description": "job application task ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx webpack --watch"
+    "test": "jest",
+    "build-watch": "npx webpack --watch",
+    "build": "npx webpack"
   },
   "repository": {
     "type": "git",
@@ -23,16 +24,21 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
     "@types/redux": "^3.6.0",
+    "@types/redux-form": "^8.3.0",
     "@types/redux-thunk": "^2.1.0",
     "axios": "^0.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
+    "redux-form": "^8.3.6",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "jest": "^26.4.2",
     "source-map-loader": "^1.1.0",
+    "ts-jest": "^26.4.0",
     "ts-loader": "^8.0.4",
     "typescript": "^4.0.3",
     "webpack": "^4.44.2",

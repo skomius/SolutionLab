@@ -19,8 +19,6 @@ public abstract class AbstractController<TEntity, TRepository> : ControllerBase
         this.repository = repository;
     }
 
-
-    // GET: api/[controller]
     [HttpGet]
     public async Task<JsonResult> Get()
     {
@@ -28,7 +26,6 @@ public abstract class AbstractController<TEntity, TRepository> : ControllerBase
         return new JsonResult(obj);
     }
 
-    // GET: api/[controller]/5
     [HttpGet("{id}")]
     public async Task<ActionResult<TEntity>> Get(int id)
     {
@@ -41,7 +38,6 @@ public abstract class AbstractController<TEntity, TRepository> : ControllerBase
         return obj;
     }
 
-    // PUT: api/[controller]/5
     [HttpPut("{id}")]
     public async Task<IActionResult> Put(int id, TEntity obj)
     {
@@ -53,15 +49,13 @@ public abstract class AbstractController<TEntity, TRepository> : ControllerBase
         return NoContent();
     }
 
-    // POST: api/[controller]
     [HttpPost]
     public async Task<ActionResult<TEntity>> Post(TEntity obj)
     {
-        await repository.Add(obj);
-        return CreatedAtAction("Get", new { id = obj.Id }, obj);
+        obj = await repository.Add(obj);
+        return new JsonResult(obj);
     }
 
-    // DELETE: api/[controller]/5
     [HttpDelete("{id}")]
     public async Task<ActionResult<TEntity>> Delete(int id)
     {
@@ -72,6 +66,5 @@ public abstract class AbstractController<TEntity, TRepository> : ControllerBase
         }
         return obj;
     }
-
 }
 

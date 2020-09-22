@@ -8,7 +8,7 @@ export const APICALL_FAIL = 'APICALL_FAIL'
 export const addCoffee = async (dispatch: any, coffee: any) => {
    
     try {
-        const res = await axios.post('http://localhost:52916/api/', coffee)
+        const res = await axios.post('http://localhost:52916/api/Coffee', coffee)
     }
     catch (e) {
         console.error(e.message)
@@ -25,19 +25,9 @@ export const deleteCoffee = async(dispatch: any, coffeeId: number) => {
         console.error(e.message)
         dispatch(apiFail())
     }
-}
 
-export const apiFail = () => {
-    return { type: APICALL_FAIL}
+    dispatch(deleteCoffeeDispatch(coffeeId))
 }
-
-export const loadCoffeeDispatch = (coffees: any[]) => {
-    return { type: LOAD_COFFEES, coffees }
-}
-
-export const deleteCoffeeDispatch = (coffeeId: string) => {
-    return { type: DELETE_COFFEE, coffeeId }
-} 
 
 export const loadCoffees = async (dispatch: any) => {
 
@@ -53,6 +43,22 @@ export const loadCoffees = async (dispatch: any) => {
     }
 
     dispatch(loadCoffeeDispatch(coffees))
+}
+
+export const apiFail = () => {
+    return { type: APICALL_FAIL}
+}
+
+export const addCoffeeDispatch = (coffee: any) => {
+    return { type: ADD_COFFEE, coffee}
+}
+
+export const loadCoffeeDispatch = (coffees: any[]) => {
+    return { type: LOAD_COFFEES, coffees }
+}
+
+export const deleteCoffeeDispatch = (coffeeId: number) => {
+    return { type: DELETE_COFFEE, coffeeId }
 }
 
 export const loadCoffeesThunk = (dispatch: any) => {

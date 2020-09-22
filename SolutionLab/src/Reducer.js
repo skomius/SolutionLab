@@ -8,39 +8,36 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const act = __importStar(require("./actions"));
-const initialState = { coffees: [] };
+const redux_1 = require("redux");
+const redux_form_1 = require("redux-form");
+const initialState = { coffees: [], isFirstLoad: true };
 function coffeeBillboard(state = initialState, action) {
     console.log(action);
     switch (action.type) {
         case act.ADD_COFFEE:
             return Object.assign({}, state, {
                 coffees: [
-                    ...state,
+                    ...state.coffees,
                     action.coffee
                 ]
             });
         case act.DELETE_COFFEE:
-            return state.coffees.filter((coffee) => {
-                coffee.id != action.id;
+            return Object.assign({}, state, {
+                coffees: state.coffees.filter((coffee) => coffee.id !== action.coffeeId)
             });
         case act.LOAD_COFFEES:
-            console.log("tes");
             return Object.assign({}, state, {
                 coffees: [
                     ...action.coffees
-                ]
-            });
-        case act.LOAD_COFFEES_V:
-            console.log("test");
-            return Object.assign({}, state, {
-                coffees: [
-                    ...state,
-                    action.coffees
-                ]
+                ],
+                isFirstLoad: false
             });
         default:
-            console.log("test");
             return state;
     }
 }
 exports.coffeeBillboard = coffeeBillboard;
+exports.rootReducer = redux_1.combineReducers({
+    coffeeBillboard,
+    form: redux_form_1.reducer
+});

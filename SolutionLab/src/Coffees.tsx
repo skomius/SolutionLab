@@ -7,28 +7,29 @@ import { deleteCoffeeThunk, loadCoffeesThunk } from "./actions";
 export class Coffees extends React.Component<{ coffees: any[], onClick: any }, {}>{
 
     render() {
-
         let arr = this.props.coffees;
         let rows: any[] = [];
         let row: any[] = [];
-
-        console.log(arr);
 
         arr.reduce((previuos, current, index, array) => {
 
             if (previuos.length < 4) {
                 previuos.push(
-                    <div key={index} style={{ display: "inline-block" }}>
-                        <button onClick={() => this.props.onClick(current.id)}>Del</button>
-                        <img src={current.picUrl}></img>
+                    <div key={index} className="box">
+                        <div style={{ marginTop:"10px"}}>
+                            <img className="image" src={current.picUrl}></img>
+                        </div>
                         <p>{current.name}</p>
-                        <p>{current.price}</p>
+                        <p>{current.price} &euro;</p>
+                        <div>
+                            <button className="btn btn-default" onClick={() => this.props.onClick(current.id)}>Remove</button>
+                        </div>    
                     </div>
                 )
             }
 
             if (previuos.length == 4 || array.length == index + 1) {
-                rows.push(<div key={index}>
+                rows.push(<div key={index} className="row">
                     {previuos}
                 </div>)
 
@@ -39,7 +40,6 @@ export class Coffees extends React.Component<{ coffees: any[], onClick: any }, {
 
         }, []);
 
-        console.log(row);
         return (
             <div>
                 {rows}
@@ -50,8 +50,9 @@ export class Coffees extends React.Component<{ coffees: any[], onClick: any }, {
 
 
 const mapStateToProps = (state: any) => {
+    console.log(state)
     return {
-        coffees: state.coffees
+        coffees: state.coffeeBillboard.coffees
     }
 }
 
