@@ -11,7 +11,6 @@ class RenderField extends react_1.default.Component {
     render() {
         const { input, label, type, meta } = this.props;
         return (react_1.default.createElement("div", null,
-            react_1.default.createElement("label", null, label),
             react_1.default.createElement("div", null,
                 react_1.default.createElement("input", Object.assign({}, input, { placeholder: label, type: type, className: "text-field" })),
                 meta.touched && ((meta.error && react_1.default.createElement("span", { className: "error" }, meta.error)) || (meta.warning && react_1.default.createElement("span", null, meta.warning))))));
