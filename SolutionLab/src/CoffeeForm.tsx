@@ -13,9 +13,8 @@ class RenderField extends React.Component<{ input: any, label: any, type: any, m
 
         return (
             <div>
-                <label>{label}</label>
                 <div>
-                    <input {...input} placeholder={label} type={type} />
+                    <input {...input} placeholder={label} type={type} className="text-field"/>
                     {meta.touched && ((meta.error && <span className="error">{meta.error}</span>) || (meta.warning && <span>{meta.warning}</span>))}
                 </div>
             </div>
