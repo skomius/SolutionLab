@@ -1,5 +1,8 @@
 ﻿import React from 'react'
 import { Field, reduxForm, InjectedFormProps } from 'redux-form'
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { apiFail, addCoffeeDispatch } from './actions';
 import { element } from 'prop-types';
 
 const required = (value: any) => value ? undefined : 'Required'
@@ -22,7 +25,7 @@ class RenderField extends React.Component<{ input: any, label: any, type: any, m
     }
 }
 
-class Form extends React.Component<InjectedFormProps, any> {
+class FormComponent extends React.Component<InjectedFormProps, any> {
 
     render() {
 
@@ -42,6 +45,33 @@ class Form extends React.Component<InjectedFormProps, any> {
     }
 }
 
-export const CoffeeForm = reduxForm({
+class Component extends React.Component<any, any> {
+
+    handleSubmit = async (values: any) => {
+
+        try {
+            const res = await axios.post('http://localhost:52916/a/Coffee', values)
+            var coffee = res.data;
+        }
+        catch (e) {
+            console.error(e.message)
+            this.props.dispatch(apiFail())
+            return
+        }
+
+        this.props.dispatch(addCoffeeDispatch(coffee))
+    }
+
+    render() {
+        return (
+            <Form onSubmit={this.handleSubmit} />
+        );
+    }
+}
+
+export const Form = reduxForm({
     form: 'coffee'
-})(Form)
+})(FormComponent)
+
+
+export const CoffeePage = connect(null, null)(Component)

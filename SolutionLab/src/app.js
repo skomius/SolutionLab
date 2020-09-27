@@ -9,10 +9,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __importStar(require("react"));
 const react_redux_1 = require("react-redux");
-const Coffees_1 = require("./Coffees");
 const actions_1 = require("./actions");
-const coffeePage_1 = require("./coffeePage");
-class App extends React.Component {
+const coffeeForm_1 = require("./coffeeForm");
+const coffeeBillBoard_1 = require("./coffeeBillBoard");
+class Component extends React.Component {
     componentDidMount() {
         if (this.props.isFirstLoad)
             this.props.loadData();
@@ -20,12 +20,11 @@ class App extends React.Component {
     render() {
         return (React.createElement("div", { className: "container container-center" },
             React.createElement("div", { className: "container container-form" },
-                React.createElement(coffeePage_1.CoffeePageConnected, null)),
+                React.createElement(coffeeForm_1.CoffeePage, null)),
             React.createElement("div", { className: "container container-billboard" },
-                React.createElement(Coffees_1.CoffeesList, null))));
+                React.createElement(coffeeBillBoard_1.CoffeeBillboard, null))));
     }
 }
-exports.App = App;
 const mapStateToProps = (state) => {
     return {
         isFirstLoad: state.coffeeBillboard.isFirstLoad
@@ -36,4 +35,4 @@ const mapDispatchToProps = (dispatch) => {
         loadData: () => dispatch(actions_1.loadCoffeesThunk(dispatch))
     };
 };
-exports.AppConnected = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(App);
+exports.App = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Component);

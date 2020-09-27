@@ -10,7 +10,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = __importStar(require("react"));
 const react_redux_1 = require("react-redux");
 const actions_1 = require("./actions");
-class Coffees extends React.Component {
+class Component extends React.Component {
     render() {
         let arr = this.props.coffees;
         let rows = [];
@@ -36,7 +36,6 @@ class Coffees extends React.Component {
         return (React.createElement("div", null, rows));
     }
 }
-exports.Coffees = Coffees;
 const mapStateToProps = (state) => {
     console.log(state);
     return {
@@ -50,4 +49,4 @@ const mapDispatchToProps = (dispatch) => {
         }
     };
 };
-exports.CoffeesList = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Coffees);
+exports.CoffeeBillboard = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Component);

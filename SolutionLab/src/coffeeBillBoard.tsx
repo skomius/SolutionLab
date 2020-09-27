@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { deleteCoffeeThunk, loadCoffeesThunk } from "./actions";
 
 
-export class Coffees extends React.Component<{ coffees: any[], onClick: any }, {}>{
+class Component extends React.Component<{ coffees: any[], onClick: any }, {}>{
 
     render() {
         let arr = this.props.coffees;
@@ -65,4 +65,4 @@ const mapDispatchToProps = (dispatch: any) => {
 }
 
 
-export const CoffeesList = connect(mapStateToProps, mapDispatchToProps)(Coffees) 
+export const CoffeeBillboard = connect(mapStateToProps, mapDispatchToProps)(Component) 

@@ -23,6 +23,7 @@ exports.addCoffee = (dispatch, coffee) => __awaiter(this, void 0, void 0, functi
     catch (e) {
         console.error(e.message);
         dispatch(exports.apiFail());
+        return;
     }
 });
 exports.deleteCoffee = (dispatch, coffeeId) => __awaiter(this, void 0, void 0, function* () {
@@ -32,6 +33,7 @@ exports.deleteCoffee = (dispatch, coffeeId) => __awaiter(this, void 0, void 0, f
     catch (e) {
         console.error(e.message);
         dispatch(exports.apiFail());
+        return;
     }
     dispatch(exports.deleteCoffeeDispatch(coffeeId));
 });
@@ -44,6 +46,7 @@ exports.loadCoffees = (dispatch) => __awaiter(this, void 0, void 0, function* ()
     catch (e) {
         console.error(e.message);
         dispatch(exports.apiFail());
+        return;
     }
     dispatch(exports.loadCoffeeDispatch(coffees));
 });

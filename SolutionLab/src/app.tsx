@@ -1,12 +1,12 @@
 ﻿import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { connect, useStore } from "react-redux";
-import { CoffeesList } from "./Coffees"
 import { loadCoffeesThunk } from "./actions";
-import { CoffeePageConnected } from "./coffeePage"
+import { CoffeePage } from "./coffeeForm"
+import { CoffeeBillboard } from "./coffeeBillBoard"
+ 
 
-
-export class App extends React.Component<{ loadData: any, isFirstLoad: boolean }, {}> {
+class Component extends React.Component<{ loadData: any, isFirstLoad: boolean }, {}> {
 
     componentDidMount() {
         if (this.props.isFirstLoad)
@@ -17,10 +17,10 @@ export class App extends React.Component<{ loadData: any, isFirstLoad: boolean }
         return (
             <div className="container container-center">
                 <div className="container container-form">
-                    <CoffeePageConnected />
+                    <CoffeePage />
                 </div>
                 <div className="container container-billboard">
-                    <CoffeesList />
+                    <CoffeeBillboard />
                 </div>
             </div>
         )
@@ -39,4 +39,4 @@ const mapDispatchToProps = (dispatch: any) => {
     }
 }
 
-export const AppConnected = connect(mapStateToProps, mapDispatchToProps)(App)
+export const App = connect(mapStateToProps, mapDispatchToProps)(Component)

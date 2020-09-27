@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <None Remove="src\CoffeeForm.tsx" />
-    <None Remove="src\coffeePage.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,8 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="src\CoffeeForm.tsx" />
-    <TypeScriptCompile Include="src\CoffeePage.tsx" />
+    <TypeScriptCompile Include="src\coffeeForm.tsx" />
   </ItemGroup>
 
 </Project>

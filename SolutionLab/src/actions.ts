@@ -13,6 +13,7 @@ export const addCoffee = async (dispatch: any, coffee: any) => {
     catch (e) {
         console.error(e.message)
         dispatch(apiFail())
+        return
     }
 }
 
@@ -24,6 +25,7 @@ export const deleteCoffee = async(dispatch: any, coffeeId: number) => {
     catch (e) {
         console.error(e.message)
         dispatch(apiFail())
+        return 
     }
 
     dispatch(deleteCoffeeDispatch(coffeeId))
@@ -40,6 +42,7 @@ export const loadCoffees = async (dispatch: any) => {
     catch (e) {
         console.error(e.message)
         dispatch(apiFail())
+        return
     }
 
     dispatch(loadCoffeeDispatch(coffees))

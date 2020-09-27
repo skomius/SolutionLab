@@ -14,9 +14,9 @@ const React = __importStar(require("react"));
 const ReactDOM = __importStar(require("react-dom"));
 const react_redux_1 = require("react-redux");
 const redux_1 = require("redux");
-const Reducer_1 = require("./Reducer");
+const reducer_1 = require("./reducer");
 const redux_thunk_1 = __importDefault(require("redux-thunk"));
 const app_1 = require("./app");
-const store = redux_1.createStore(Reducer_1.rootReducer, redux_1.applyMiddleware(redux_thunk_1.default));
+const store = redux_1.createStore(reducer_1.rootReducer, redux_1.applyMiddleware(redux_thunk_1.default));
 ReactDOM.render(React.createElement(react_redux_1.Provider, { store: store },
-    React.createElement(app_1.AppConnected, null)), document.getElementById("CoffeeList"));
+    React.createElement(app_1.App, null)), document.getElementById("CoffeeList"));
