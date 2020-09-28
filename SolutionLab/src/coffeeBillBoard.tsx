@@ -9,12 +9,11 @@ class Component extends React.Component<{ coffees: any[], onClick: any }, {}>{
     render() {
         let arr = this.props.coffees;
         let rows: any[] = [];
-        let row: any[] = [];
 
-        arr.reduce((previuos, current, index, array) => {
+        arr.reduce((row, current, index, array) => {
 
-            if (previuos.length < 4) {
-                previuos.push(
+            if (row.length < 4) {
+                row.push(
                     <div key={index} className="box">
                         <div style={{ marginTop:"10px"}}>
                             <img className="image" src={current.picUrl}></img>
@@ -28,15 +27,15 @@ class Component extends React.Component<{ coffees: any[], onClick: any }, {}>{
                 )
             }
 
-            if (previuos.length == 4 || array.length == index + 1) {
+            if (row.length == 4 || array.length == index + 1) {
                 rows.push(<div key={index} className="row">
-                    {previuos}
+                    {row}
                 </div>)
 
                 return []
             }
 
-            return previuos
+            return row
 
         }, []);
 
