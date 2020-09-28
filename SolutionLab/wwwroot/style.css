@@ -1,5 +1,4 @@
 ﻿body {
-
 }
 
 .container {
@@ -9,8 +8,8 @@
     margin-left: auto;
 }
 
-.container-center{
-    text-align: center; 
+.container-center {
+    text-align: center;
     width: 80%;
 }
 
@@ -41,17 +40,16 @@
     height: 200px;
 }
 
-.add-button{
-    width:63px;
+.add-button {
+    width: 63px;
     margin-top: 10px
-
 }
 
-.error{
+.error {
     color: red
 }
 
-label{
+label {
     margin-top: 10px
 }
 
@@ -110,11 +108,13 @@ input {
     border-radius: 10px;
     border: 1px solid #eee;
     transition: .3s border-color;
-}l
+}
 
-    .text-field:hover {
-        border: 1px solid #aaa;
-    }
+l
+
+.text-field:hover {
+    border: 1px solid #aaa;
+}
 
 /*.type-2 {
     background-color: #fafafa;
@@ -135,4 +135,50 @@ input {
     .type-3:hover {
         background-color: #fafafa;
     }*/
+
+modal-backgroung {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.75;
+    z-index: 900;
+}
+
+body.modal-open {
+    /* body overflow is hidden to hide main scrollbar when modal window is open */
+    overflow: hidden;
+}
+
+.modal {
+    /* modal container fixed across whole screen */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* z-index must be higher than .modal-background */
+    z-index: 1000;
+    /* enables scrolling for tall modals */
+    overflow: auto;
+}
+
+.modal-body {
+    /* modal container fixed across whole screen */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* z-index must be higher than .modal-background */
+    z-index: 1000;
+    /* enables scrolling for tall modals */
+    overflow: auto;
+    padding: 20px;
+    background: #fff;
+    /* margin exposes part of the modal background */
+    margin: 40px;
+}
 

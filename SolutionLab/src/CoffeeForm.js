@@ -43,7 +43,7 @@ class Component extends react_1.default.Component {
         super(...arguments);
         this.handleSubmit = (values) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const res = yield axios_1.default.post('http://localhost:52916/api/Coffee', values);
+                const res = yield axios_1.default.post('http://localhost:52916/a/Coffee', values);
                 var coffee = res.data;
             }
             catch (e) {
